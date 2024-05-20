@@ -62,30 +62,6 @@ class SubscribePageView(WebPageSingletonView):
         return context
 
 
-class SubscribeEmailPageView(WebPageSingletonView):
-    model = SampleSubscribePage
-    template_name = 'contacts/index.html'
-
-    def get_object(self, queryset=None):
-        return self.model.get_solo()
-
-    def get_context_data(self, **kwargs):
-        self.get_seo().set_data(self.object, defaults={
-            'title': self.object.title,
-            'og_title': self.object.title,
-        })
-        self.get_seo().save(self.request)
-        self.request.breadcrumbs.add(self.object.title)
-
-        context = super().get_context_data(**kwargs)
-        context.update({
-            'config': self.model.get_solo(),
-            'sample_subscribe_page': True,
-        })
-        return context
-
-
-
 class ThankYouView(DetailView):
     model = ThankYouPage
     context_object_name = 'page'

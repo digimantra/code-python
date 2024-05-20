@@ -17,7 +17,7 @@ class ContactForm(FormHelperMixin, forms.ModelForm):
             }
         ))
     field_templates = {
-        # 'time': 'form_helper/choice_field.html',
+
         'marital_status': 'form_helper/choice_field_2.html',
         'bussines_owner': 'form_helper/choice_field_2.html',
         'household_income': 'form_helper/field.html',
@@ -362,7 +362,6 @@ class DefaultForm(FormHelperMixin, forms.ModelForm):
         }
 
     def clean(self):
-        """ Требуем указать email ИЛИ телефон """
         if 'phone' in self.cleaned_data and 'email' in self.cleaned_data:
             phone = self.cleaned_data.get('phone')
             email = self.cleaned_data.get('email')
