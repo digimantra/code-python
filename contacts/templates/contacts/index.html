@@ -1,0 +1,123 @@
+{% extends 'webpage/index.html' %}
+
+{% block static_head %}
+    {{ super() }}
+    {% stylesheet 'contacts' %}
+{% endblock static_head %}
+
+{% block static_js %}
+    {{ super() }}
+    {% javascript 'contacts' %}
+{% endblock static_js %}
+
+
+{% block page_unique_content %}
+
+{% if is_contact %}
+    <section class="contact-block block contact-block--second">
+        <div class="grid-block contact-block__wrapper">
+            <div class="contact-block__content">
+                <h2 class="contact-block__title">{{ page.form_block_header }}</h2>
+                {% if is_contact %}
+                    <a href="tel:{{ page.number|phone }}" class="contact-block__phone">{{ page.number }}</a>
+                {% endif %}
+                <p class="contact-block__text">
+                    {{ page.form_block_description }}
+                </p>
+            </div>
+            <form class="form contact-form-js" id="ajax-contact-form" method="post"
+                  action="{{ ajax_url('contacts.default_form_ajax') }}">
+                {% csrf_token %}
+                <div class="form__large-row">
+                    <div class="form__field field-name">
+                        {% render_field form 'name' attrs={'placeholder': 'Test'} %}
+                    </div>
+                </div>
+                <div class="form__large-row">
+                    <div class="form__field field-email">
+                        {% render_field form 'email' %}
+                    </div>
+                </div>
+                <div class="form__large-row">
+                    <div class="form__field">
+                        {% render_field form 'phone' %}
+                    </div>
+                </div>
+                <div class="form__large-row">
+                    <div class="form__field">
+                        {% render_field form 'message' %}
+                    </div>
+                </div>
+                <div class="form__large-row">
+                    <div class="form__field">
+                        {% render_field form 'additional_information' %}
+                    </div>
+                </div>
+                <div class="form__large-row">
+                    <div class="form__field">
+                        {% render_field form 'captcha' required %}
+                    </div>
+                </div>
+                <button type="submit"
+                        class="form__button form__button--modal btn">{{ _('Submit your message') }}</button>
+            </form>
+        </div>
+    </section>
+{% endif %}
+
+{% if subscribe_page or sample_subscribe_page %}
+        <style>
+         .custom-height{
+                height:684px;
+            }
+            .embedForm{
+                border: 1px solid lightgrey !important;
+            }
+            .custom-block-text{
+                 text-align: initial;
+                font-size: 16px;
+                font-size: 1rem;
+                line-height: 1.375;
+                margin-top: 7px;
+                max-width:none !important;
+            }
+            @media only screen and (max-width: 600px) {
+              .custom-contact-form {
+                margin-top:50px;
+              }
+            }
+
+    </style>
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '327669');
+    </script>
+    <section class="contact-block block contact-block--second">
+        <div class="container">
+             <div class="row" {% if sample_subscribe_page %} style="justify-content: center; " {% endif %}>
+                 {% if not sample_subscribe_page %}
+                <div class="col-md-8 custom-padding">
+                    <div class="swiper-container">
+                        <h3 class="title-h2">Does making all the right financial decisions for your future seem daunting?</h3>
+                        <p class="mt-3 contact-block__text custom-block-text">Are you wondering if you’re on track to meet your goals like early retirement, buying a second house, or funding the education of your children?</p>
+                        <p class="contact-block__text custom-block-text">Then you’re in the right place.</p>
+                        <p class="contact-block__text custom-block-text">At Colorado Wealth Group, we help you take control of your finances so you can focus on what you do best and the people you love most.</p>
+                        <p class="contact-block__text custom-block-text">We also send out pretty amazing newsletters designed to help successful professionals and families like you learn, grow, and change your (financial) life for the better.</p>
+                        <p class="contact-block__text custom-block-text"><b>So why wait?</b></p>
+                        <p class="contact-block__text custom-block-text"><b>Join our community of savvy and determined professionals and business owners who are already benefiting today.</b></p>
+                    </div>
+                </div>
+                 {% endif %}
+                <div class="col-md-4 custom-contact-form">
+                    <div class="ml-embedded custom-form" data-form="8oA9gh"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endif %}
+
+{% endblock %}

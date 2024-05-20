@@ -1,0 +1,7 @@
+<p class="title title-h1">{{ _('Contact Us') }}</p>
+
+{{ form.media }}
+<form method="post" action="{{ ajax_url('contacts.popup') }}" id="ajax-popup-contact-form" autocomplete="off">
+  {% render_form form %}
+  <button type="submit" class="btn">{{ _('Send') }}</button>
+</form>

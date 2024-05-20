@@ -1,0 +1,66 @@
+{% extends 'webpage/index.html' %}
+
+{% block static_head %}
+    {{ super() }}
+    {% stylesheet 'meta-page' %}
+    {#	{% stylesheet 'thank-page' %}#}
+{% endblock static_head %}
+
+{% block static_js %}
+    {{ super() }}
+    {% javascript 'contacts' %}
+{% endblock static_js %}
+
+{% block title %}{{ _('Thank You!') }}{% endblock %}
+{% block content %}
+<!-- Your webpage content goes here -->
+
+<!-- Calendly embed code -->
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+ <div class="std std--js">
+        <div class="std__img-wrapper">
+            <img class="std__img" src="/static/img/login.jpg">
+        </div>
+        <div class="block_wrapper">
+             <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/mselihar/initial-consult?primary_color=4778d4"
+             >
+            <h1 class="app_header"> Book An Appointment </h1>
+            </div> 
+    </div>
+        <div class="std__wrapper grid-block">
+            <div class="std__block">
+                <h1 class="std__title">Thank you!</h1>
+
+                <p class="std__text text">Colorado Wealth Group appreciates your interest in our professional services.
+                    Our Service Team will be in contact soon;
+                    please expect an email from service@coloradowealthgroup.com.</p>
+            </div> 
+    </div> 
+</div>
+
+ 
+    
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+   
+
+
+
+
+<!-- Includes Calendly script -->
+<script
+type="text/javascript"
+src="https://assets.calendly.com/assets/external/widget.js"
+></script>
+
+<!-- Open Calendly on page load -->
+<script>
+window.onload = function() {
+  Calendly.initInlineWidget();
+};
+</script>
+{% endblock content %}
+

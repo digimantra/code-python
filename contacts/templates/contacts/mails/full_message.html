@@ -1,0 +1,132 @@
+
+{% if message.name %}
+<p><b>Full Name:</b><br>{{ message.name }}</p>
+{% endif %}
+
+{% if message.email %}
+<p><b>Email:</b><br>{{ message.email }}</p>
+{% endif %}
+
+{% if message.phone %}
+<p><b>Phone:</b><br>{{ message.phone }}</p>
+{% endif %}
+
+{% if message.date_of_birth %}
+<p><b>Date of Birth:</b><br>{{ message.date_of_birth }}</p>
+{% endif %}
+
+{% if message.marital_status %}
+<p><b>Marital Status:</b><br>{{ message.marital_status }}</p>
+{% endif %}
+
+{% if message.spouse_name %}
+<p><b>Spouse's Name:</b><br>{{ message.spouse_name }}</p>
+{% endif %}
+
+{% if message.spouse_date_birth %}
+<p><b>Spouse's Date of Birth:</b><br>{{ message.spouse_date_birth }}</p>
+{% endif %}
+
+{% if message.occupation %}
+<p><b>Occupation:</b><br>{{ message.occupation }}</p>
+{% endif %}
+
+{% if message.spouse_occupation %}
+<p><b>Spouse's Occupation:</b><br>{{ message.spouse_occupation }}</p>
+{% endif %}
+
+{% if message.retirement %}
+<p><b>Your Retirement:</b><br>{{ message.retirement }}</p>
+{% endif %}
+
+{% if message.spouse_retirement %}
+<p><b>Spouse's Retirement:</b><br>{{ message.spouse_retirement }}</p>
+{% endif %}
+
+{% if message.bussines_owner %}
+<p><b>Is your or your spouse’s primary occupation a business owner?</b><br>{{ message.bussines_owner }}</p>
+{% endif %}
+
+{% if message.business_owner %}
+<p><b>Is your or your spouse’s primary occupation a business owner?</b><br>{{ message.business_owner }}</p>
+{% endif %}
+
+{% if message.household_income %}
+<p><b>Household Income:</b><br>{{ message.household_income }}</p>
+{% endif %}
+
+{% if message.stock_options %}
+<p><b>Is an ongoing portion of your or your spouse’s income based on stock options or equity compensation?</b><br>{{ message.stock_options }}</p>
+{% endif %}
+
+{% if message.investeble_assets %}
+<p><b>Investable Assets: </b><br>{{ message.investeble_assets }}</p>
+{% endif %}
+
+{% if message.real_estate_question %}
+<p><b>Do you own real estate in addition to your primary residence, or plan to in the future?</b><br>{{ message.real_estate_question }}</p>
+{% endif %}
+
+{% if message.number_of_children %}
+<p><b>Number of Children: </b>{{ message.number_of_children }}</p>
+{% endif %}
+
+{% if message.basic_goals1 %}
+<p>
+    <b>Main Objectives or Basic Goals for a Potential Engagement with Colorado Wealth Group:</b><br>
+    <ul>
+        {% for goal in message.basic_goals1 %}
+        <li>{{ goal }}</li>
+        {% endfor %}
+    </ul>
+</p>
+{% endif %}
+
+{% if message.professional_guidance %}
+<p><b>what professional guidance are you seeking?: </b><br>{{ message.professional_guidance }}</p>
+{% endif %}
+
+{% if message.how_did_you_hear_about_us %}
+<p>
+    <b>How Did You Hear About Us?:</b><br>
+    <ul>
+        {% for data in message.how_did_you_hear_about_us %}
+        <li>{{ data }}</li>
+        {% endfor %}
+    </ul>
+</p>
+{% endif %}
+
+{% if message.social_media %}
+<p><b>Which social media platform have you seen us on?:</b><br>{{ message.social_media }}</p>
+{% endif %}
+
+{% if message.additional_information %}
+<p><b>Additional Information:</b><br>{{ message.additional_information }}</p>
+{% endif %}
+
+{% if message.time %}
+<p><b>Time:</b><br>{{ message.time }}</p>
+{% endif %}
+
+{% if message.message %}
+<p><b>Message:</b><br>{{ message.message }}</p>
+{% endif %}
+
+<hr>
+
+{% if message.date_convenient %}
+<p><b>Date Convenient:</b><br>{{ message.date_convenient }}</p>
+{% endif %}
+
+{% if message.date %}
+<p><b>Date:</b><br>{{ message.date }}</p>
+{% endif %}
+
+{% if message.referer %}
+<p><b>From Page:</b> <a href="{{ message.referer }}" target="_blank">{{ message.referer }}</a></p>
+{% endif %}
+
+{% if request.COOKIES.utm %}
+<p><b>UTM:</b> {{ request.COOKIES.utm }}</p>
+{% endif %}

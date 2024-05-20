@@ -1,0 +1,45 @@
+<section class="contact-block block {% if is_contact %} contact-block--second {% endif %}" id="contacts">
+    <div class="grid-block contact-block__wrapper">
+        <div class="contact-block__content">
+            <h2 class="contact-block__title">{{ block.header }}</h2>
+            {% if is_contact %}
+                <a href="tel:{{ address.number|phone }}" class="contact-block__phone">{{ address.number }}</a>
+            {% endif %}
+            <p class="contact-block__text">
+                {{ block.description }}
+            </p>
+        </div>
+        <form class="form-adviser form" id="ajax-contact-form" method="post"
+              action="{{ ajax_url('contacts.form_ajax') }}">
+            {% csrf_token %}
+            <div class="form-box">
+                <div class="form__large-row">
+                    <div class="form__field">
+                        {% render_field form 'name' %}
+                    </div>
+                </div>
+                <div class="form__large-row">
+                    <div class="form__field">
+                        {% render_field form 'email' %}
+                    </div>
+                </div>
+                <div class="form__large-row">
+                    <div class="form__field">
+                        {% render_field form 'phone' %}
+                    </div>
+                </div>
+{#                <div class="form__large-row">#}
+{#                    <div class="form__field">#}
+{#                        {% render_field form 'date_convenient' %}#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form__large-row form__large-row_line">#}
+{#                    {% render_field form 'time' %}#}
+{#                </div>#}
+            </div>
+            <button type="submit" class="form__button form__button--js btn">{{ _('continue reservation') }}</button>
+        </form>
+        {% include 'contacts/popups/pop_up_form.html' %}
+    </div>
+
+</section>

@@ -1,0 +1,186 @@
+<div class="modal modal--js">
+    <div class="modal__content">
+        <div class="modal__wrapper">
+            <div class="modal__header">
+                <h2 class="modal__title title-h2">Details Matter!</h2>
+                <h3 class="modal__subtitle title-h5">Please help us get to know you better so we can make your perfect
+                    match.</h3>
+            </div>
+            <div class="modal__inner">
+                <div class="modal__scroll">
+                    <div class="modal__options">
+                        <p class="modal__options-title text">Or use one of these opt out options:</p>
+                        <ul class="modal__options-list">
+                            <li class="modal__options-item">
+                                <a href="tel:{{ address.number|phone }}">
+                                    <div class="modal__options-item-img"></div>
+                                    <span class="modal__options-item-title text">Call</span>
+                                </a>
+                            </li>
+                            <li class="modal__options-item">
+                                <a target="_blank" href="{{ url('contacts:index') }}">
+                                    <div class="modal__options-item-img"></div>
+                                    <span class="modal__options-item-title text">Message</span>
+                                </a>
+                            </li>
+                            <li class="modal__options-item">
+                                <button type="button" class="open-chat-js">
+                                    <span class="modal__options-item-img"></span>
+                                    <span class="modal__options-item-title text">Live Chat</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form class="form form--modal form-adviser_two" method="post"
+                          action="{{ ajax_url('contacts.form_ajax') }}"
+                          data-keyword=""
+                          >
+                        {% csrf_token %}
+                        <div class="form__large-row">
+                            <div class="form__field">
+                                {% render_field form 'date_of_birth' %}
+                            </div>
+                        </div>
+                        <span class="form__description">Your Marital Status</span>
+                        <div class="form__large-row form__large-row_line">
+                            {% render_field form 'marital_status' %}
+                        </div>
+                        <div class="form__large-row--hidden form__status"> <span class="form__descriptions">Spouse's Name*</span></div>
+                        <div class="form__large-row form__large-row--hidden form__status">
+                            <div class="form__field">
+                                {% render_field form 'spouse_name' %}
+                            </div>
+                        </div>
+                        <div class="form__large-row--hidden form__status"><span class="form__description form__description_textarea">Spouse's Date Of Birth*</span></div>
+                        <div class="form__large-row form__large-row--hidden form__status">
+                            <div class="form__field">
+                                {% render_field form 'spouse_date_birth' %}
+                            </div>
+                        </div>
+                        <span class="form__description form__description_textarea">Occupation*</span>
+                        <div class="form__large-row">
+                            <div class="form__field">
+                                {% render_field form 'occupation' %}
+                            </div>
+                        </div>
+                        <div class="form__large-row--hidden form__status"><span class="form__description form__description_textarea">Spouse's Occupation*</span></div>
+                        <div class="form__large-row form__large-row--hidden form__status">
+                            <div class="form__field">
+                                {% render_field form 'spouse_occupation' %}
+                            </div>
+                        </div>
+
+                        <span class="form__descriptions">How close is your retirement?*</span>
+                        <div class="form__large-row form__large-row--select">
+                            <div class="form__field">
+                                {% render_field form 'retirement' %}
+                            </div>
+                        </div>
+                        <div class="form__large-row--hidden form__status"> <span class="form__descriptions">How close is your spouse's retirement?*</span></div>
+                        <div class="form__large-row form__large-row--select form__large-row--hidden form__status">
+                            <div class="form__field">
+                                {% render_field form 'spouse_retirement' %}
+                            </div>
+                        </div>
+
+
+
+                        <span class="form__description">Is your or your spouse’s primary occupation a business owner?</span>
+                        <div class="form__large-row form__large-row_line">
+                            {% render_field form 'bussines_owner' %}
+                        </div>
+                        <div class="form__large-row form__large-row--select">
+                            <div class="form__field">
+                                {% render_field form 'household_income' %}
+                            </div>
+                        </div>
+                        <span class="form__select-description">Gross household income. Please include salary plus bonuses, commissions,
+                    1099 consulting income, stock option income, and net profits from businesses.</span>
+
+                        <span class="form__description">Is an ongoing portion of your or your spouse’s income based on stock options or equity compensation?</span>
+                        <div class="form__large-row form__large-row_line">
+                            {% render_field form 'stock_options' %}
+                        </div>
+                        <div class="form__large-row form__large-row--select">
+                            <div class="form__field">
+                                {% render_field form 'investeble_assets' %}
+                            </div>
+                        </div>
+                        <span class="form__select-description">Investable assets include cash, checking, savings, money markets, stocks, bonds, mutual funds, IRAs, Roth IRAs, trusts, and all employer retirement accounts (401(k), 403(b), pension, etc)</span>
+                        <span class="form__description">Do you own real estate in addition to your primary residence, or plan to in the future?</span>
+                        <div class="form__large-row form__large-row_line">
+                            {% render_field form 'real_estate_question' %}
+                        </div>
+                        <div class="form__large-row form__large-row--select">
+                            <div class="form__field">
+                                {% render_field form 'number_of_children' %}
+                            </div>
+                        </div>
+                        <span class="form__description form__description_textarea">What are your main objectives or basic goals for a potential engagement with Colorado Wealth Group? <br><br>Please check all that apply.</span>
+                        <div class="form__large-row">
+                            <div class="form__field">
+                                {% render_field form 'basic_goals1' %}
+                            </div>
+                        </div>
+
+                        <span class="form__description form__description_textarea">In your words, what professional guidance are you seeking?*</span>
+                        <div class="form__large-row">
+                            <div class="form__field">
+                                {% render_field form 'professional_guidance' %}
+                            </div>
+                        </div>
+                        <span class="form__description form__description_textarea">How did you hear about us?*</span>
+                        <div class="form__large-row">
+                            {% render_field form 'how_did_you_hear_about_us' %}
+                        </div>
+
+                        <span class="form__descriptions">Which social media platform have you seen us on?*</span>
+                        <div class="form__large-row form__large-row--select">
+                            <div class="form__field">
+                                {% render_field form 'social_media' %}
+                            </div>
+                        </div>
+
+                        <span class="form__description form__description_textarea">Additional Information</span>
+                        <div class="form__large-row">
+                            {% render_field form 'additional_information' %}
+                        </div>
+                        <span class="form__description">Have you read all aspects of our fee structure outlined on our website via <a href="/about/fee-structure/" target="_blank"><b>“<u>Our Fee Structure</u>”</b></a> page?</span>
+                        <div class="form__large-row form__large-row_line">
+                            {% render_field form 'read_fee_structure' %}
+                        </div>
+
+                        <div class="form__large-row">
+                            <div class="form__field">
+                                {% render_field form 'agree' %}
+                            </div>
+                        </div>
+                        <div class="form__large-row test">
+                            <div class="form__field" >
+                                {% render_field form 'captcha' required %}
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                                class="form__button form__button--modal btn" onclick="myfunction()" >{{ _('complete reservation') }}
+                        </button>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+       
+        <button type="button" class="modal__close modal__close--js"></button>
+       
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+ 
+
+</script>
+

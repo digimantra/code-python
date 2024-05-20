@@ -1,0 +1,27 @@
+{% if message.name %}
+  <p><b>Name:</b> {{ message.name }}</p>
+{% endif %}
+
+{% if message.phone %}
+  <p><b>Phone:</b> {{ message.phone }}</p>
+{% endif %}
+
+{% if message.email %}
+  <p><b>Email:</b> {{ message.email }}</p>
+{% endif %}
+
+{% if message.message %}
+  <p><b>Message:</b> {{ message.message }}</p>
+{% endif %}
+
+{% if message.additional_information %}
+  <p><b>Additional information:</b> {{ message.additional_information }}</p>
+{% endif %}
+
+{% if message.referer %}
+  <p><b>{{ _('From page') }}:</b> <a href="{{ message.referer }}" target="_blank">{{ message.referer }}</a></p>
+{% endif %}
+
+{% if request.COOKIES.utm %}
+  <p><b>{{ _('UTM') }}:</b> {{ request.COOKIES.utm }}</p>
+{% endif %}
