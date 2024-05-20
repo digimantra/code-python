@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView
 from django.views.generic.edit import FormMixin
 from seo.seo import Seo
-from .models import ContactsConfig, NotificationReceiver, ThankYouPage, DefaultMessage
+from .models import ContactsConfig
 from .forms import ContactForm, DefaultForm
 from libs.email import send_template
 from django.utils.translation import ugettext_lazy as _
@@ -39,8 +39,9 @@ class IndexView(DetailView):
         return context
 
 
-class SubscribePageView(WebPageSingletonView):
-    model = SubscribePage
+
+class SubscribeEmailPageView(WebPageSingletonView):
+    model = SampleSubscribePage
     template_name = 'contacts/index.html'
 
     def get_object(self, queryset=None):
@@ -57,29 +58,9 @@ class SubscribePageView(WebPageSingletonView):
         context = super().get_context_data(**kwargs)
         context.update({
             'config': self.model.get_solo(),
-            'subscribe_page': True,
+            'sample_subscribe_page': True,
         })
         return context
-
-
-class ThankYouView(DetailView):
-    model = ThankYouPage
-    context_object_name = 'page'
-    template_name = 'contacts/thank_you.html'
-
-    def get_object(self, queryset=None):
-        return self.model.get_solo()
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({
-            'address': ContactsConfig.get_solo(),
-            'header': self.object.header,
-            'text': self.object.text
-        })
-        return context
-
-
 
 
 def contact_block_render(context, block, **kwargs):
